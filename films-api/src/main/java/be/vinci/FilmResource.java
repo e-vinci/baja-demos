@@ -4,6 +4,7 @@ import jakarta.inject.Singleton;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import org.apache.commons.text.StringEscapeUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -48,6 +49,8 @@ public class FilmResource {
                     Response.status(Response.Status.BAD_REQUEST).entity("Lacks of mandatory info").type("text/plain").build());
         var films = Json.parse();
         film.setId(films.size() + 1);
+        film.setTitle(StringEscapeUtils.escapeHtml4(film.getTitle()));
+        film.setLink(StringEscapeUtils.escapeHtml4(film.getLink()));
         films.add(film);
         Json.serialize(films);
         return film;
@@ -84,6 +87,8 @@ public class FilmResource {
             throw new WebApplicationException(Response.status(Response.Status.NOT_FOUND)
                     .entity("Ressource not found").type("text/plain").build());
         film.setId(id);
+        film.setTitle(StringEscapeUtils.escapeHtml4(film.getTitle()));
+        film.setLink(StringEscapeUtils.escapeHtml4(film.getLink()));
         films.remove(film); // thanks to equals(), films is found via its id
         films.add(film);
         Json.serialize(films);

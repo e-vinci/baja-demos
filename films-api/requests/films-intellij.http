@@ -25,3 +25,14 @@ Content-Type: application/json
   "budget" : 110,
   "link" : "https://en.wikipedia.org/wiki/Venom:_Let_There_Be_Carnage"
 }
+
+### Create One film with dangerous characters
+POST {{baseUrl}}/films
+Content-Type: application/json
+
+{
+  "title" : "<img src=\"#\" onerror=\"alert('You have been hacked !')\">",
+  "duration" : 9,
+  "budget" : 110,
+  "link" : "https://en.wikipedia.org/wiki/Venom:_Let_There_Be_Carnage"
+}
