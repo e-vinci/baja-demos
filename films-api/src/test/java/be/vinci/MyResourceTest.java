@@ -1,4 +1,4 @@
-package vinci.be;
+package be.vinci;
 
 import jakarta.ws.rs.client.Client;
 import jakarta.ws.rs.client.ClientBuilder;
