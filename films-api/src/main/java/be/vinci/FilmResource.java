@@ -56,6 +56,38 @@ public class FilmResource {
         return film;
     }
 
+    @DELETE
+    @Path("/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Film deleteOne(@PathParam("id") int id) {
+        if (id == 0) // default value of an integer => has not been initialized
+            throw new WebApplicationException(Response.status(Response.Status.BAD_REQUEST).entity("Lacks of mandatory id info")
+                    .type("text/plain").build());
+        Film filmToDelete = films.stream().filter(film -> film.getId() == id).findAny().orElse(null);
+        if (filmToDelete == null)
+            throw new WebApplicationException(Response.status(Response.Status.NOT_FOUND)
+                    .entity("Ressource not found").type("text/plain").build());
+        films.remove(filmToDelete);
+        return filmToDelete;
+    }
+
+    @PUT
+    @Path("/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Film updateOne(Film film, @PathParam("id") int id) {
+        if (id == 0 || film == null || film.getTitle() == null || film.getTitle().isBlank())
+            throw new WebApplicationException(
+                    Response.status(Response.Status.BAD_REQUEST).entity("Lacks of mandatory info").type("text/plain").build());
+        Film filmToUpdate = films.stream().filter(f -> f.getId() == id).findAny().orElse(null);
+        if (filmToUpdate == null)
+            throw new WebApplicationException(Response.status(Response.Status.NOT_FOUND)
+                    .entity("Ressource not found").type("text/plain").build());
+        film.setId(id);
+        films.remove(film); // thanks to equals(), films is found via its id
+        films.add(film);
+        return film;
+    }
 
 
 }
