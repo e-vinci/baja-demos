@@ -1,4 +1,4 @@
-package be.vinci;
+package be.vinci.main;
 
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
@@ -23,8 +23,8 @@ public class Main {
     public static HttpServer startServer() {
         // create a resource config that scans for JAX-RS resources and providers
         // in vinci.be package
-        final ResourceConfig rc = new ResourceConfig().packages("be.vinci")
-                .register(JacksonFeature.class);;
+        final ResourceConfig rc = new ResourceConfig().packages("be.vinci.api")
+                .register(JacksonFeature.class);
 
         // create and start a new instance of grizzly http server
         // exposing the Jersey application at BASE_URI
