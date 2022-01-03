@@ -1,5 +1,6 @@
 package be.vinci;
 
+import jakarta.inject.Singleton;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-
+@Singleton
 @Path("films")
 public class FilmResource {
     private Film[] defaultFilms = {
@@ -24,8 +25,8 @@ public class FilmResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<Film> getAll() {
-        if(films.size()>0)
-            films.remove(films.size()-1);
+        if (films.size() > 0)
+            films.remove(films.size() - 1);
         return films;
     }
 
