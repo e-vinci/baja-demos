@@ -24,6 +24,9 @@ public class FilmResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<Film> getAll() {
+        if(films.size()>0)
+            films.remove(films.size()-1);
         return films;
     }
+
 }
