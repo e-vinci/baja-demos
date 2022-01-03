@@ -23,11 +23,15 @@ public class FilmResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Film> getAll() {
-        if (films.size() > 0)
-            films.remove(films.size() - 1);
+    public List<Film> getAll(@DefaultValue("-1") @QueryParam("minimum-duration") int minimumDuration) {
+        if (minimumDuration != -1) {
+            List<Film> filmsFiltered = films.stream().filter(film -> film.getDuration() >= minimumDuration)
+                    .toList();
+            return filmsFiltered;
+        }
         return films;
     }
+
 
     @GET
     @Path("/{id}")
