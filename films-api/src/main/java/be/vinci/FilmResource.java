@@ -1,10 +1,9 @@
 package be.vinci;
 
 import jakarta.inject.Singleton;
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -29,5 +28,17 @@ public class FilmResource {
             films.remove(films.size() - 1);
         return films;
     }
+
+    @GET
+    @Path("/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Film getOne(@PathParam("id") int id) {
+        Film filmFound = films.stream().filter(film -> film.getId() == id).findAny().orElse(null);
+        if (filmFound == null)
+            throw new WebApplicationException(Response.status(Response.Status.NOT_FOUND)
+                    .entity("Ressource not found").type("text/plain").build());
+        return filmFound;
+    }
+
 
 }
