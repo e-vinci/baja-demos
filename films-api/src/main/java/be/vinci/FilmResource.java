@@ -44,5 +44,18 @@ public class FilmResource {
         return filmFound;
     }
 
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Film createOne(Film film) {
+        if (film == null || film.getTitle() == null || film.getTitle().isBlank())
+            throw new WebApplicationException(
+                    Response.status(Response.Status.BAD_REQUEST).entity("Lacks of mandatory info").type("text/plain").build());
+        film.setId(films.size() + 1);
+        films.add(film);
+        return film;
+    }
+
+
 
 }
