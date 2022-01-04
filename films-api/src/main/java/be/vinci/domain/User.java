@@ -1,5 +1,7 @@
 package be.vinci.domain;
 
+import org.mindrot.jbcrypt.BCrypt;
+
 public class User {
 
     private int id;
@@ -33,7 +35,11 @@ public class User {
     }
 
     public boolean checkPassword(String password) {
-        return this.password.equals(password);
+        return BCrypt.checkpw(password, this.password);
+    }
+
+    public String hashPassword(String password) {
+        return BCrypt.hashpw(password, BCrypt.gensalt());
     }
 
     @Override

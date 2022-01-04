@@ -1,11 +1,15 @@
 package be.vinci.api;
 
+import be.vinci.api.filters.Authorize;
+import be.vinci.domain.User;
 import be.vinci.services.FilmDataService;
 import be.vinci.domain.Film;
 import jakarta.inject.Singleton;
 import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import org.glassfish.jersey.server.ContainerRequest;
 
 import java.util.List;
 
@@ -36,7 +40,10 @@ public class FilmResource {
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Film createOne(Film film) {
+    @Authorize
+    public Film createOne(Film film, @Context ContainerRequest request) {
+        User authenticatedUser = (User) request.getProperty("user");
+        System.out.println("A new film is added by " + authenticatedUser.getLogin() );
         if (film == null || film.getTitle() == null || film.getTitle().isBlank())
             throw new WebApplicationException(
                     Response.status(Response.Status.BAD_REQUEST).entity("Lacks of mandatory info").type("text/plain").build());
@@ -46,6 +53,7 @@ public class FilmResource {
     @DELETE
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
+    @Authorize
     public Film deleteOne(@PathParam("id") int id) {
         if (id == 0) // default value of an integer => has not been initialized
             throw new WebApplicationException(Response.status(Response.Status.BAD_REQUEST).entity("Lacks of mandatory id info")
@@ -61,6 +69,7 @@ public class FilmResource {
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
+    @Authorize
     public Film updateOne(Film film, @PathParam("id") int id) {
         if (id == 0 || film == null || film.getTitle() == null || film.getTitle().isBlank())
             throw new WebApplicationException(
