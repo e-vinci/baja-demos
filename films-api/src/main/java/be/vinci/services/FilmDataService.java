@@ -8,7 +8,7 @@ import java.util.List;
 
 public class FilmDataService {
     private static final String COLLECTION_NAME = "films";
-    private static Json<Film> jsonDB = new Json<>();
+    private static Json<Film> jsonDB = new Json<>(Film.class);
 
 
     public List<Film> getAll(int minimumDuration) {

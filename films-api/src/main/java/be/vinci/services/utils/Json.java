@@ -19,7 +19,14 @@ public class Json<T> {
     private static final String DB_FILE_PATH = Config.getProperty("DatabaseFilePath");
     private static Path pathToDb = Paths.get(DB_FILE_PATH);
     private final static ObjectMapper jsonMapper = new ObjectMapper();
-    private T type;
+    private Class<T> type ;
+
+    // Java generics are mostly compile time, this means that the type information is lost at runtime.
+    // To get the type information at runtime you have to add it as an argument of the constructor.
+    public Json(Class<T> type){
+        this.type = type;
+    }
+
 
     public void serialize(List<T> items, String collectionName) {
         try {
@@ -57,7 +64,7 @@ public class Json<T> {
             if (collection == null) // Send an empty list if there is not the requested collection
                 return (List<T>) new ArrayList<T>();
             // convert the JsonNode to a List of POJOs & return it
-            return jsonMapper.readerForListOf(Film.class).readValue(collection);
+            return jsonMapper.readerForListOf(type).readValue(collection);
         } catch (FileNotFoundException e) {
             return (List<T>) new ArrayList<T>(); // send an empty list if there is no db file
         } catch (IOException e) {
