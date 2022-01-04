@@ -1,5 +1,6 @@
 package be.vinci.main;
 
+import be.vinci.utils.Config;
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.jackson.JacksonFeature;
@@ -13,8 +14,11 @@ import java.net.URI;
  *
  */
 public class Main {
+    static{
+        Config.load("dev.properties");
+    }
     // Base URI the Grizzly HTTP server will listen on
-    public static final String BASE_URI = "http://localhost:8080/";
+    public static final String BASE_URI = Config.getProperty("BaseUri");
 
     /**
      * Starts Grizzly HTTP server exposing JAX-RS resources defined in this application.
