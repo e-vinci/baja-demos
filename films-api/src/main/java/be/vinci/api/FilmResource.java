@@ -34,8 +34,7 @@ public class FilmResource {
     public Film getOne(@PathParam("id") int id) {
         Film filmFound = myFilmDataService.getOne(id);
         if (filmFound == null)
-            throw new WebApplicationException(Response.status(Response.Status.NOT_FOUND)
-                    .entity("Ressource not found").type("text/plain").build());
+            throw new WebApplicationException("Ressource not found", Response.Status.NOT_FOUND);
         return filmFound;
     }
 
@@ -47,8 +46,7 @@ public class FilmResource {
         User authenticatedUser = (User) request.getProperty("user");
         System.out.println("A new film is added by " + authenticatedUser.getLogin());
         if (film == null || film.getTitle() == null || film.getTitle().isBlank())
-            throw new WebApplicationException(
-                    Response.status(Response.Status.BAD_REQUEST).entity("Lacks of mandatory info").type("text/plain").build());
+            throw new WebApplicationException("Lacks of mandatory info", Response.Status.BAD_REQUEST);
         return myFilmDataService.createOne(film);
     }
 
@@ -58,12 +56,10 @@ public class FilmResource {
     @Authorize
     public Film deleteOne(@PathParam("id") int id) {
         if (id == 0) // default value of an integer => has not been initialized
-            throw new WebApplicationException(Response.status(Response.Status.BAD_REQUEST).entity("Lacks of mandatory id info")
-                    .type("text/plain").build());
+            throw new WebApplicationException("Lacks of mandatory id info", Response.Status.BAD_REQUEST);
         Film deletedFilm = myFilmDataService.deleteOne(id);
         if (deletedFilm == null)
-            throw new WebApplicationException(Response.status(Response.Status.NOT_FOUND)
-                    .entity("Ressource not found").type("text/plain").build());
+            throw new WebApplicationException("Ressource not found", Response.Status.NOT_FOUND);
         return deletedFilm;
     }
 
@@ -74,12 +70,10 @@ public class FilmResource {
     @Authorize
     public Film updateOne(Film film, @PathParam("id") int id) {
         if (id == 0 || film == null || film.getTitle() == null || film.getTitle().isBlank())
-            throw new WebApplicationException(
-                    Response.status(Response.Status.BAD_REQUEST).entity("Lacks of mandatory info").type("text/plain").build());
+            throw new WebApplicationException("Lacks of mandatory info", Response.Status.BAD_REQUEST);
         Film updatedFilm = myFilmDataService.updateOne(film, id);
         if (updatedFilm == null)
-            throw new WebApplicationException(Response.status(Response.Status.NOT_FOUND)
-                    .entity("Ressource not found").type("text/plain").build());
+            throw new WebApplicationException("Ressource not found", Response.Status.NOT_FOUND);
         return updatedFilm;
     }
 

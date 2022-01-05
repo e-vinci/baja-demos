@@ -5,21 +5,14 @@ import jakarta.ws.rs.core.Response;
 
 public class TokenDecodingException extends WebApplicationException {
     public TokenDecodingException() {
-        super(Response.status(Response.Status.UNAUTHORIZED)
-                .build());
+        super(Response.Status.UNAUTHORIZED);
     }
 
     public TokenDecodingException(String message) {
-        super(Response.status(Response.Status.UNAUTHORIZED)
-                .entity(message)
-                .type("text/plain")
-                .build());
+        super(message, Response.Status.UNAUTHORIZED);
     }
 
     public TokenDecodingException(Throwable cause) {
-        super(Response.status(Response.Status.UNAUTHORIZED)
-                .entity(cause.getMessage())
-                .type("text/plain")
-                .build());
+        super(cause.getMessage(), Response.Status.UNAUTHORIZED);
     }
 }
