@@ -4,6 +4,8 @@ import be.vinci.api.filters.Authorize;
 import be.vinci.domain.User;
 import be.vinci.services.FilmDataService;
 import be.vinci.domain.Film;
+import be.vinci.services.FilmDataServiceImpl;
+import jakarta.inject.Inject;
 import jakarta.inject.Singleton;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Context;
@@ -16,8 +18,8 @@ import java.util.List;
 @Singleton
 @Path("films")
 public class FilmResource {
-
-    private FilmDataService myFilmDataService = new FilmDataService();
+    @Inject
+    private FilmDataService myFilmDataService;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -43,7 +45,7 @@ public class FilmResource {
     @Authorize
     public Film createOne(Film film, @Context ContainerRequest request) {
         User authenticatedUser = (User) request.getProperty("user");
-        System.out.println("A new film is added by " + authenticatedUser.getLogin() );
+        System.out.println("A new film is added by " + authenticatedUser.getLogin());
         if (film == null || film.getTitle() == null || film.getTitle().isBlank())
             throw new WebApplicationException(
                     Response.status(Response.Status.BAD_REQUEST).entity("Lacks of mandatory info").type("text/plain").build());

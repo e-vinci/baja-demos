@@ -1,8 +1,10 @@
 package be.vinci.api;
 
 import be.vinci.services.UserDataService;
+import be.vinci.services.UserDataServiceImpl;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import jakarta.inject.Inject;
 import jakarta.inject.Singleton;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
@@ -11,8 +13,8 @@ import jakarta.ws.rs.core.Response;
 @Singleton
 @Path("/auths")
 public class AuthsResource {
-
-    private UserDataService myUserDataService = new UserDataService();
+    @Inject
+    private UserDataService myUserDataService;
 
     @POST
     @Path("login")
