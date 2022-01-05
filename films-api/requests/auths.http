@@ -17,7 +17,7 @@ Content-Type: application/json
 }
 
 ### Register john
-POST {{baseUrl}}/register
+POST {{baseUrl}}/auths/register
 Content-Type: application/json
 
 {
@@ -26,10 +26,19 @@ Content-Type: application/json
 }
 
 ### Login with John credentials
-POST {{baseUrl}}/login
+POST {{baseUrl}}/auths/login
 Content-Type: application/json
 
 {
   "login":"john",
   "password":"123"
+}
+
+### Register guest
+POST {{baseUrl}}/auths/register
+Content-Type: application/json
+
+{
+  "login":"guest",
+  "password":"guest"
 }

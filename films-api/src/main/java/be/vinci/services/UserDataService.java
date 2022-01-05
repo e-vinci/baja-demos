@@ -1,5 +1,7 @@
 package be.vinci.services;
 
+import be.vinci.domain.DomainFactory;
+import be.vinci.domain.DomainFactoryImpl;
 import be.vinci.domain.User;
 import be.vinci.services.utils.Json;
 import be.vinci.utils.Config;
@@ -13,6 +15,7 @@ import java.util.List;
 public class UserDataService {
     private static final String COLLECTION_NAME = "users";
     private static Json<User> jsonDB = new Json<>(User.class);
+    private static DomainFactory myDomainFactory = new DomainFactoryImpl();
     private final Algorithm jwtAlgorithm = Algorithm.HMAC256(Config.getProperty("JWTSecret"));
     private final ObjectMapper jsonMapper = new ObjectMapper();
 
@@ -72,7 +75,7 @@ public class UserDataService {
         User tempUser = getOne(login);
         if (tempUser != null) // the user already exists !
             return null;
-        tempUser = new User();
+        tempUser = myDomainFactory.getUser();
         tempUser.setLogin(login);
         tempUser.setPassword(tempUser.hashPassword(password));
 

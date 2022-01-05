@@ -26,7 +26,6 @@ public class AuthsResource {
         }
         String login = json.get("login").asText();
         String password = json.get("password").asText();
-
         // Try to login
         ObjectNode publicUser = myUserDataService.login(login, password);
         if (publicUser == null) {
@@ -35,7 +34,6 @@ public class AuthsResource {
                     .build());
         }
         return publicUser;
-
     }
 
     @POST

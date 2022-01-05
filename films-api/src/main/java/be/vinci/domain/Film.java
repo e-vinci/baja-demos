@@ -1,82 +1,25 @@
 package be.vinci.domain;
 
-public class Film {
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
-    private int id;
-    private String title;
-    private int duration;
-    private long budget;
-    private String link;
+public interface Film {
+    int getId();
 
-    public Film() {
-    }
+    void setId(int id);
 
-    public Film(int id, String title, int duration, long budget, String link) {
-        this.id = id;
-        this.title = title;
-        this.duration = duration;
-        this.budget = budget;
-        this.link = link;
-    }
+    String getTitle();
 
-    public int getId() {
-        return id;
-    }
+    void setTitle(String title);
 
-    public void setId(int id) {
-        this.id = id;
-    }
+    int getDuration();
 
-    public String getTitle() {
-        return title;
-    }
+    void setDuration(int duration);
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+    long getBudget();
 
-    public int getDuration() {
-        return duration;
-    }
+    void setBudget(long budget);
 
-    public void setDuration(int duration) {
-        this.duration = duration;
-    }
+    String getLink();
 
-    public long getBudget() {
-        return budget;
-    }
-
-    public void setBudget(long budget) {
-        this.budget = budget;
-    }
-
-    public String getLink() {
-        return link;
-    }
-
-    public void setLink(String link) {
-        this.link = link;
-    }
-
-    @Override
-    public String toString() {
-        return "Film [id=" + id + ", title=" + title + ", duration=" + duration + ", budget=" + budget + ", link="
-                + link + "]";
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Film film = (Film) o;
-
-        return id == film.id;
-    }
-
-    @Override
-    public int hashCode() {
-        return id;
-    }
+    void setLink(String link);
 }

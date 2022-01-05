@@ -1,50 +1,21 @@
 package be.vinci.domain;
 
-import org.mindrot.jbcrypt.BCrypt;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
-public class User {
+public interface User {
+    String getLogin();
 
-    private int id;
+    void setLogin(String login);
 
-    private String login;
+    int getId();
 
-    private String password;
+    void setId(int id);
 
-    public String getLogin() {
-        return login;
-    }
+    String getPassword();
 
-    public void setLogin(String login) {
-        this.login = login;
-    }
+    void setPassword(String password);
 
-    public int getId() {
-        return id;
-    }
+    boolean checkPassword(String password);
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public boolean checkPassword(String password) {
-        return BCrypt.checkpw(password, this.password);
-    }
-
-    public String hashPassword(String password) {
-        return BCrypt.hashpw(password, BCrypt.gensalt());
-    }
-
-    @Override
-    public String toString() {
-        return "{id:" + id + ", login:" + login + ", password:" + password + "}";
-    }
-
+    String hashPassword(String password);
 }
