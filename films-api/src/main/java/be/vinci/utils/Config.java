@@ -18,8 +18,7 @@ public class Config {
         try (InputStream input = new FileInputStream(file)) {
             props.load(input);
         } catch (IOException e) {
-            throw new WebApplicationException(
-                    Response.status(Status.INTERNAL_SERVER_ERROR).entity(e.getMessage()).type("text/plain").build());
+            e.printStackTrace();
         }
     }
 
