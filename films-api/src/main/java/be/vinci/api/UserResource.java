@@ -23,6 +23,7 @@ public class UserResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Authorize
     public List<User> getAll() {
+        System.out.println("getAll");
         return myUserDataService.getAll();
     }
 

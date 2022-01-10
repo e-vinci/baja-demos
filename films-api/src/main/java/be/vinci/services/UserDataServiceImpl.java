@@ -8,6 +8,7 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+
 import jakarta.inject.Inject;
 
 import java.util.List;
@@ -20,11 +21,10 @@ public class UserDataServiceImpl implements UserDataService {
     private final Algorithm jwtAlgorithm = Algorithm.HMAC256(Config.getProperty("JWTSecret"));
     private final ObjectMapper jsonMapper = new ObjectMapper();
 
-
     @Override
     public List<User> getAll() {
         var items = jsonDB.parse(COLLECTION_NAME);
-        return items;
+        return jsonDB.filterPublicJsonViewAsList(items);
     }
 
 

@@ -3,6 +3,7 @@ package be.vinci.services;
 import be.vinci.domain.User;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
+import java.io.IOException;
 import java.util.List;
 
 public interface UserDataService {
