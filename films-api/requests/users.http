@@ -21,10 +21,8 @@ POST {{baseUrl}}/auths/register
 Content-Type: application/json
 
 {
-  "login":"twig",
-  "password":"twig",
-  "age": 25,
-  "married": true
+  "login":"twigkjkljk",
+  "password":"twigmm"
 }
 
 ### Login twig

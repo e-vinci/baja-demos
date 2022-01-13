@@ -4,13 +4,13 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 @JsonDeserialize(as = UserImpl.class)
 public interface User {
-    int getAge();
+    Integer getAge();
 
-    void setAge(int age);
+    void setAge(Integer age);
 
-    boolean isMarried();
+    Boolean isMarried();
 
-    void setMarried(boolean married);
+    void setMarried(Boolean married);
 
     String getLogin();
 

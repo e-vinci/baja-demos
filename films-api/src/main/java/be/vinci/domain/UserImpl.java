@@ -2,7 +2,6 @@ package be.vinci.domain;
 
 import be.vinci.views.Views;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonView;
 import org.mindrot.jbcrypt.BCrypt;
 
@@ -15,27 +14,27 @@ class UserImpl implements User {
     @JsonView(Views.Internal.class)
     private String password;
     @JsonView(Views.Internal.class)
-    private int age;
-    @JsonView(Views.Internal.class)
-    private boolean married ;
+    private Integer age;
+    @JsonView(Views.Public.class)
+    private Boolean married ;
 
     @Override
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 
     @Override
-    public void setAge(int age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 
     @Override
-    public boolean isMarried() {
+    public Boolean isMarried() {
         return married;
     }
 
     @Override
-    public void setMarried(boolean married) {
+    public void setMarried(Boolean married) {
         this.married = married;
     }
 
