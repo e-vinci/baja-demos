@@ -7,12 +7,14 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="films-api-module1" />
+        <module name="films-api-module2" />
         <module name="films-api" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="films-api" target="17" />
       <module name="films-api-module1" target="17" />
+      <module name="films-api-module2" target="17" />
     </bytecodeTargetLevel>
   </component>
 </project>
