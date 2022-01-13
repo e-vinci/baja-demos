@@ -19,5 +19,5 @@ public interface UserDataService {
 
     ObjectNode login(String login, String password);
 
-    ObjectNode register(String login, String password);
+    ObjectNode register(User user);
 }

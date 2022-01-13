@@ -83,7 +83,7 @@ public class Json<T> {
             // views are not serialized)
             String publicItemListAsString = jsonMapper.writerWithView(Views.Public.class).writeValueAsString(list);
             // deserialize using JSON Views : Public View (all fields that are not serialized
-            // are set to null in the POJOs)
+            // are set to their default values in the POJOs)
             return jsonMapper.readerWithView(Views.Public.class).forType(type).readValue(publicItemListAsString);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
@@ -98,13 +98,44 @@ public class Json<T> {
             // views are not serialized)
             String publicItemAsString = jsonMapper.writerWithView(Views.Public.class).writeValueAsString(item);
             // deserialize using JSON Views : Public View (all fields that are not serialized
-            // are set to null in the POJO)
+            // are set to their default values in the POJO)
             return jsonMapper.readerWithView(Views.Public.class).forType(type).readValue(publicItemAsString);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
             return null;
         }
 
+    }
+
+    // To be used if you want to filter attributes when serializing in a JSON file
+    public void serializePublicInfoOnly(List<T> items, String collectionName) {
+        try {
+            String currentCollectionAsString = jsonMapper.writerWithView(Views.Public.class).writeValueAsString(items);
+            JsonNode updatedCollection = jsonMapper.readTree(currentCollectionAsString);
+            // if no DB file, write a new collection to a new db file
+            if (!Files.exists(pathToDb)) {
+                // Create an object and add a JSON array as POJO, e.g. { items:[...]}
+                ObjectNode newCollection = jsonMapper.createObjectNode().putPOJO(collectionName, updatedCollection);
+                jsonMapper.writeValue(pathToDb.toFile(), newCollection); // write the JSON Object in the DB file
+                return;
+            }
+            // get all collections : can be read as generic JsonNode, if it can be Object or Array;
+            JsonNode allCollections = jsonMapper.readTree(pathToDb.toFile()); // e.g. { users:[...], items:[...]}
+            // remove current collection, e.g. remove the array of items
+            if (allCollections.has(collectionName)) {
+                ((ObjectNode) allCollections).remove(collectionName); //e.g. it leaves { users:[...]}
+            }
+
+            // Prepare a JSON array from the list of POJOs for the collection to be updated, e.g. [{"film1",...}, ...]
+            //ArrayNode updatedCollection = jsonMapper.valueToTree(items);
+
+            // Add the JSON array in allCollections, e.g. : { users:[...], items:[...]}
+            ((ObjectNode) allCollections).putPOJO(collectionName, updatedCollection);
+            // write to the db file allCollections
+            jsonMapper.writeValue(pathToDb.toFile(), allCollections);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }
