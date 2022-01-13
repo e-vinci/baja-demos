@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/baja-demo.iml" filepath="$PROJECT_DIR$/.idea/baja-demo.iml" />
       <module fileurl="file://$PROJECT_DIR$/films-api/films-api.iml" filepath="$PROJECT_DIR$/films-api/films-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/films-api-module1/films-api-module1.iml" filepath="$PROJECT_DIR$/films-api-module1/films-api-module1.iml" />
     </modules>
   </component>
 </project>
