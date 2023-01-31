@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="films-api-web-app:war">
+    <output-path>$PROJECT_DIR$/films-api-web-app/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <exploded>false</exploded>
+        <module>films-api-web-app</module>
+        <packaging>war</packaging>
+        <unpackNestedArchives>false</unpackNestedArchives>
+      </options>
+    </properties>
+    <root id="archive" name="films-api-web-app.war">
+      <element id="artifact" artifact-name="films-api-web-app:war exploded" />
+    </root>
+  </artifact>
+</component>

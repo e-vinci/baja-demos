@@ -1,0 +1,78 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="film-api-rest-service:war exploded">
+    <output-path>$PROJECT_DIR$/film-api-rest-service/target/film-api-1.0</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <exploded>true</exploded>
+        <module>film-api-rest-service</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="film-api-rest-service" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: jakarta.inject:jakarta.inject-api:2.0.0" />
+          <element id="library" level="project" name="Maven: org.glassfish.jersey.containers:jersey-container-servlet:3.0.3" />
+          <element id="library" level="project" name="Maven: org.glassfish.jersey.containers:jersey-container-servlet-core:3.0.3" />
+          <element id="library" level="project" name="Maven: org.glassfish.jersey.core:jersey-common:3.0.3" />
+          <element id="library" level="project" name="Maven: org.glassfish.hk2:osgi-resource-locator:1.0.3" />
+          <element id="library" level="project" name="Maven: org.glassfish.jersey.media:jersey-media-json-jackson:3.0.3" />
+          <element id="library" level="project" name="Maven: org.glassfish.jersey.ext:jersey-entity-filtering:3.0.3" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.12.2" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.12.2" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.12.2" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.module:jackson-module-jaxb-annotations:2.12.2" />
+          <element id="library" level="project" name="Maven: javax.xml.bind:jaxb-api:2.3.1" />
+          <element id="library" level="project" name="Maven: javax.activation:javax.activation-api:1.2.0" />
+          <element id="library" level="project" name="Maven: org.glassfish.hk2:hk2:3.0.2" />
+          <element id="library" level="project" name="Maven: org.glassfish.hk2:hk2-utils:3.0.2" />
+          <element id="library" level="project" name="Maven: org.glassfish.hk2:hk2-api:3.0.2" />
+          <element id="library" level="project" name="Maven: org.glassfish.hk2.external:aopalliance-repackaged:3.0.2" />
+          <element id="library" level="project" name="Maven: org.glassfish.hk2:hk2-core:3.0.2" />
+          <element id="library" level="project" name="Maven: org.glassfish.hk2:hk2-locator:3.0.2" />
+          <element id="library" level="project" name="Maven: org.glassfish.hk2:hk2-runlevel:3.0.2" />
+          <element id="library" level="project" name="Maven: org.glassfish.hk2:class-model:3.0.2" />
+          <element id="library" level="project" name="Maven: org.ow2.asm:asm:9.1" />
+          <element id="library" level="project" name="Maven: org.ow2.asm:asm-analysis:9.1" />
+          <element id="library" level="project" name="Maven: org.ow2.asm:asm-commons:9.1" />
+          <element id="library" level="project" name="Maven: org.ow2.asm:asm-tree:9.1" />
+          <element id="library" level="project" name="Maven: org.ow2.asm:asm-util:9.1" />
+          <element id="library" level="project" name="Maven: org.apache.commons:commons-text:1.9" />
+          <element id="library" level="project" name="Maven: org.apache.commons:commons-lang3:3.11" />
+          <element id="library" level="project" name="Maven: com.auth0:java-jwt:3.18.2" />
+          <element id="library" level="project" name="Maven: org.mindrot:jbcrypt:0.4" />
+          <element id="library" level="project" name="Maven: org.glassfish.jersey.core:jersey-server:3.0.0" />
+          <element id="library" level="project" name="Maven: org.glassfish.jersey.core:jersey-client:3.0.0" />
+          <element id="library" level="project" name="Maven: org.glassfish.jersey.media:jersey-media-jaxb:3.0.0" />
+          <element id="library" level="project" name="Maven: jakarta.annotation:jakarta.annotation-api:2.0.0" />
+          <element id="library" level="project" name="Maven: jakarta.validation:jakarta.validation-api:3.0.0" />
+          <element id="library" level="project" name="Maven: jakarta.xml.bind:jakarta.xml.bind-api:3.0.0" />
+          <element id="library" level="project" name="Maven: com.sun.activation:jakarta.activation:2.0.0" />
+          <element id="library" level="project" name="Maven: io.swagger.core.v3:swagger-jaxrs2:2.1.12" />
+          <element id="library" level="project" name="Maven: io.github.classgraph:classgraph:4.8.117" />
+          <element id="library" level="project" name="Maven: io.github.toolfactory:jvm-driver:4.0.0" />
+          <element id="library" level="project" name="Maven: io.github.toolfactory:narcissus:1.0.1" />
+          <element id="library" level="project" name="Maven: org.javassist:javassist:3.25.0-GA" />
+          <element id="library" level="project" name="Maven: io.swagger.core.v3:swagger-models:2.1.12" />
+          <element id="library" level="project" name="Maven: io.swagger.core.v3:swagger-annotations:2.1.12" />
+          <element id="library" level="project" name="Maven: io.swagger.core.v3:swagger-integration:2.1.12" />
+          <element id="library" level="project" name="Maven: io.swagger.core.v3:swagger-core:2.1.12" />
+          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.25" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.12.1" />
+          <element id="library" level="project" name="Maven: org.yaml:snakeyaml:1.27" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.12.1" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:2.12.1" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.jaxrs:jackson-jaxrs-base:2.12.1" />
+          <element id="library" level="project" name="Maven: io.swagger.core.v3:swagger-jaxrs2-servlet-initializer:2.1.12" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/film-api-rest-service/target/film-api-1.0/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="film-api-rest-service/web/Web" />
+    </root>
+  </artifact>
+</component>

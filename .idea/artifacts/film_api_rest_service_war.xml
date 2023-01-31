@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="film-api-rest-service:war">
+    <output-path>$PROJECT_DIR$/film-api-rest-service/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>film-api-rest-service</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="film-api-1.0.war">
+      <element id="artifact" artifact-name="film-api-rest-service:war exploded" />
+    </root>
+  </artifact>
+</component>
