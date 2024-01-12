@@ -88,3 +88,11 @@ fabric.properties
 
 # Ignore "DB" JSON file
 db.json
+
+# Folder view configuration files
+.DS_Store
+Desktop.ini
+
+# Thumbnail cache files
+._*
+Thumbs.db

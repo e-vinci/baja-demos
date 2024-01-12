@@ -44,6 +44,9 @@ public class FilmDataService {
   public Film deleteOne(int id) {
     var films = jsonDB.parse(COLLECTION_NAME);
     Film filmToDelete = films.stream().filter(film -> film.getId() == id).findAny().orElse(null);
+    if (filmToDelete == null) {
+      return null;
+    }
     films.remove(filmToDelete);
     jsonDB.serialize(films, COLLECTION_NAME);
     return filmToDelete;
@@ -52,6 +55,9 @@ public class FilmDataService {
   public Film updateOne(Film film, int id) {
     var films = jsonDB.parse(COLLECTION_NAME);
     Film filmToUpdate = films.stream().filter(f -> f.getId() == id).findAny().orElse(null);
+    if (filmToUpdate == null) {
+      return null;
+    }
     film.setId(id);
     film.setTitle(StringEscapeUtils.escapeHtml4(film.getTitle()));
     film.setLink(StringEscapeUtils.escapeHtml4(film.getLink()));
@@ -63,9 +69,9 @@ public class FilmDataService {
 
   public int nextFilmId() {
     var films = jsonDB.parse(COLLECTION_NAME);
-      if (films.size() == 0) {
-          return 1;
-      }
+    if (films.size() == 0) {
+      return 1;
+    }
     return films.get(films.size() - 1).getId() + 1;
   }
 }
