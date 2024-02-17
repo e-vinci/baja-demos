@@ -28,7 +28,7 @@ Content-Type: application/json
 }
 
 ### Login with John credentials
-POST {{baseUrl}}/login
+POST {{baseUrl}}/auths/login
 Content-Type: application/json
 
 {
